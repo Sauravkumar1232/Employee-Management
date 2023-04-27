@@ -18,9 +18,10 @@ export default function AddUser() {
     name: "",
     username: "",
     email: "",
+    phone:"",
   });
 
-  const { name, username, email } = user;
+  const { name, username, email,phone } = user;
 
    const onInputChange = (e) => {
      setUser({ ...user, [e.target.name]: e.target.value });
@@ -41,6 +42,12 @@ export default function AddUser() {
                 <h3 className='text-center m-4'> Register Employee</h3>
 
                 <form onSubmit={(e)=>onSubmit(e)}>
+                
+                <div className='mb-3'>
+                    <label htmlFor="id" className='form-lable'>id</label>
+                    <input type="number" name="id" id="id" className='form-control' placeholder='Enter emp id'   onChange={(e)=>onInputChange(e)}/>
+                </div>
+
                 <div className='mb-3'>
                     <label htmlFor="Name" className='form-lable'>Name</label>
                     <input type="text" name="name" id="name" className='form-control' placeholder='Enter your name'   onChange={(e)=>onInputChange(e)}/>
@@ -55,7 +62,14 @@ export default function AddUser() {
                     <label htmlFor="Email" className='form-lable'>Email</label>
                     <input type="text" name="email" id="email" className='form-control' placeholder='Enter your Email' value={email} onChange={(e)=>onInputChange(e)} />
                 </div>
-                <button  className='btn btn-outline-primary'>Submit</button>
+                <div className='mb-3'>
+                    <label htmlFor="Phone" className='form-lable'>Phone</label>
+                    <input type="number" name="phone" id="phone" className='form-control' placeholder='Enter your phone' value={phone} onChange={(e)=>onInputChange(e)} />
+                </div>
+               
+               
+               
+                <button  type='submit' className='btn btn-outline-primary'>Submit</button>
                 <Link to={"/"} className='btn btn-outline-danger'>Cancel</Link>
             
                 </form>

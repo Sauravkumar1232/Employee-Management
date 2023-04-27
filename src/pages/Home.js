@@ -10,10 +10,13 @@ import { Button } from 'bootstrap';
 
 export default function Home() {
 
-    const [users,setUser]=useState([])  //as initial state is empty array
+    const [users,setUser]=useState([])          
+                                                //useState is React Hook that allows you to add state to a functional component. 
+                                                // It returns an array with two values: the current state and a function to update it.
+                                                //  The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called
 
     const {id} = useParams();
- useEffect(()=>{
+    useEffect(()=>{        // fetching data
     loadUsers()
  },[])              //runs one on pageload otherwise without [] runs unlimited times
 
@@ -27,6 +30,7 @@ export default function Home() {
    const deleteUser = async(id)=>{
     await axios.delete(`http://localhost:9114/user/${id}`);
     loadUsers();
+    alert(`Employee ${id} deleted.`);
 
 
    }
@@ -42,23 +46,29 @@ export default function Home() {
       <th scope="col">Name</th>
       <th scope="col">UserName</th>
       <th scope="col">Email</th>
+      {/* <th scope="col"></th> */}
+      <th scope="col">Phone </th>
       <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
 
   {
     users.map((user,index)=>(    //map create array on calling time 
-        <tr>
-      <th scope="row" key={index}>{index+1}</th>
+        <tr >
+      {/* <th scope="row" key={index}>{index+1}</th> */}
+      <th>{user.id}</th>
       <td>{user.name}</td>
       <td>{user.username}</td>
       <td>{user.email}</td>
+      <td>{user.phone}</td>
       
-        <td>  
+      
+        <td >  
             <Link to={`/viewuser/${user.id}`} id="buttonhome" className="btn btn-outline-primary" >View</Link>
-            <Link to={`/edituser/${user.id}`} id="buttonhome" className="btn btn-outline-success">Edit</Link>
-            <button onClick={()=>deleteUser(user.id)} id="buttonhome" className="btn btn-outline-danger">Delete</button>
+             <Link to={`/edituser/${user.id}`} id="buttonhome" className="btn btn-outline-success">Edit</Link> 
+            <button  onClick={()=>deleteUser(user.id)} id="buttonhome" className="btn btn-outline-danger">Delete</button>
             
         </td>
      

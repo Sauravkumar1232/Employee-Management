@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -49,7 +50,8 @@
   width: fit-content;
   height: 50px;
   text-align: center;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
   transition-duration: 0.4s;
   text-decoration: none;
   overflow: hidden;
@@ -63,7 +65,7 @@
   position: absolute;
   padding-top: 300%;
   padding-left: 350%;
-  margin-left: -20px!important;
+  margin-left: -20px !important;
   margin-top: -120%;
   opacity: 0;
   transition: all 0.8s
@@ -89,7 +91,8 @@
   width: fit-content;
   height: fit-content;
   text-align: center;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
   transition-duration: 0.4s;
   text-decoration: none;
   overflow: hidden;
@@ -103,7 +106,7 @@
   position: absolute;
   padding-top: 300%;
   padding-left: 350%;
-  margin-left: -20px!important;
+  margin-left: -20px !important;
   margin-top: -120%;
   opacity: 0;
   transition: all 0.8s
@@ -117,6 +120,25 @@
 }
 
 
-#buttonhome{
+#buttonhome {
   margin-right: 5px;
+}
+
+.btn btn-info{
+  margin-top: 50px;
+}
+
+.backToHome{
+  margin-top: 10px;
+  /* padding-top: 5px; */
+  padding: 4px ;
+  border:none;
+  background-color: rgb(74, 192, 100);
+  border-radius:5px;
+  color:black;
+  text-align: center;
+  text-decoration: none;   
+  /*  remove inderline*/
+  display: inline-block;
+  font-size: 15px;
 }

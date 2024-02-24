@@ -11,25 +11,24 @@ import { BrowserRouter as Router, Routes , Route
 import AddUser from './users/AddUser';
 import EditUser from './users/EditUser';
 import ViewUser from './users/ViewUser';
+import Hello from './Hello';
+import ListOfEmployee from './component/ListOfEmployee';
 
-function App() {
+function  App() {
   return (
-    <div className="App">
-
-    <Router>
-    <NavBar/>   
-      <Routes>
-           <Route exact path='/' element={<Home/>}/> 
-           <Route exact path='/adduser' element={<AddUser/>}/> 
-           <Route exact path='/edituser/:id' element={<EditUser/>}/> 
-           <Route exact path='/viewuser/:id' element={<ViewUser/>}/>
-      </Routes>
-    </Router>
-
- 
-    
-
-    </div>
+    <ListOfEmployee/>
+    //  <Hello/>
+  //   <div className="App">
+  //   <Router>
+  //   <NavBar/>   
+  //     <Routes>
+  //          <Route exact path='/' element={<Home/>}/> 
+  //          <Route exact path='/adduser' element={<AddUser/>}/> 
+  //          <Route exact path='/edituser/:id' element={<EditUser/>}/> 
+  //          <Route exact path='/viewuser/:id' element={<ViewUser/>}/>
+  //     </Routes>
+  //   </Router>
+  //   </div>
   );
 }
 

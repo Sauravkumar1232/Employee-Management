@@ -142,3 +142,9 @@
   display: inline-block;
   font-size: 15px;
 }
+ 
+ /* ul{
+  display: table;
+  text-align: left;
+    /* margin-left: 50px;  */
+    /* margin: 0 auto; */ 

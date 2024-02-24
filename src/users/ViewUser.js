@@ -7,6 +7,8 @@ export default function ViewUser() {
     name: "",
     username: "",
     email: "",
+    phone: "",
+    age:""
   });
 
   const { id } = useParams(); //specific user for specific id
@@ -23,7 +25,7 @@ export default function ViewUser() {
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h3 className="text-center m-4"> Employee Detail</h3>
+          <h3 className="text-center m-4"> Employee Details</h3>
 
           <div className="card">
             <div className="card-header">
@@ -40,6 +42,9 @@ export default function ViewUser() {
                 </li>
                 <li className="list-group-item">
                   <b>Phone : {user.phone}</b>
+                </li>
+                <li className="list-group-item">
+                 <b> Age : {user.age} </b>
                 </li>
               </ul>
             </div>

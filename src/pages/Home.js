@@ -48,6 +48,7 @@ export default function Home() {
       <th scope="col">Email</th>
       {/* <th scope="col"></th> */}
       <th scope="col">Phone </th>
+      <th> Age</th>
       <th scope="col">Action</th>
 
     </tr>
@@ -62,8 +63,9 @@ export default function Home() {
       <td>{user.name}</td>
       <td>{user.username}</td>
       <td>{user.email}</td>
+
       <td>{user.phone}</td>
-      
+      <td>{user.age}</td>
       
         <td >  
             <Link to={`/viewuser/${user.id}`} id="buttonhome" className="btn btn-outline-primary" >View</Link>

@@ -8,15 +8,17 @@ export default function EditUser() {
   let navigate = useNavigate(); //to navigate to the hoem page
 
   const { id } = useParams();
-
+    //empid=id;
   const [user, setUser] = useState({
+    id:"",
     name: "",
     username: "",
     email: "",
-    phone:"",
+    phone: "",
+    age: "",
   });
 
-  const { name, username, email,phone } = user;
+  const { name, username, email, phone, age } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -32,7 +34,7 @@ export default function EditUser() {
     //await axios.post("http://localhost:9114/user", user);
     await axios.put(`http://localhost:9114/user/${id}`, user);
     navigate("/");
-    alert(`${id} Employee Updated `)
+    alert(`${id} Employee Updated `);
   };
 
   const loadUser = async () => {
@@ -47,6 +49,22 @@ export default function EditUser() {
           <h3 className="text-center m-4"> Edit Employee</h3>
 
           <form onSubmit={(e) => onSubmit(e)}>
+           
+          <div className="mb-3">
+              <label htmlFor="Id" className="form-lable">
+                Id
+              </label>
+              <input
+                type="number"
+                name="id"
+                id="id"
+                className="form-control"
+                placeholder="Enter your id"
+                value={id}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+           
             <div className="mb-3">
               <label htmlFor="Name" className="form-lable">
                 Name
@@ -107,8 +125,23 @@ export default function EditUser() {
               />
             </div>
 
-            
-            <button onSubmit={()=>onSubmit()} type="submit" className="btn btn-outline-primary">
+            <div>
+              <label htmlFor="Age"> Age</label>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                 className="form-control"
+                placeholder="Enter new age"
+                value={age}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
+
+            <button
+              onSubmit={() => onSubmit()}
+              type="submit"
+              className="btn btn-outline-primary">
               Submit
             </button>
             <Link to={"/"} className="btn btn-outline-danger">

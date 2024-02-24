@@ -19,9 +19,10 @@ export default function AddUser() {
     username: "",
     email: "",
     phone:"",
+    age:""
   });
 
-  const { name, username, email,phone } = user;
+  const { name, username, email,phone ,age} = user;
 
    const onInputChange = (e) => {
      setUser({ ...user, [e.target.name]: e.target.value });
@@ -31,7 +32,7 @@ export default function AddUser() {
   const onSubmit = async (e) => {
     e.preventDefault();  //on url not showing extra data 
     await axios.post("http://localhost:9114/user", user);
-    navigate("/");
+    navigate("/");    // go to home 
   };
 
 
@@ -65,6 +66,12 @@ export default function AddUser() {
                 <div className='mb-3'>
                     <label htmlFor="Phone" className='form-lable'>Phone</label>
                     <input type="number" name="phone" id="phone" className='form-control' placeholder='Enter your phone' value={phone} onChange={(e)=>onInputChange(e)} />
+                </div>
+
+                <div className='mb-3'>
+                  <label htmlFor='Age' className='from-label'>Age</label>
+                  <input type="number" name='age' id='age ' className='form-control' placeholder='Enter your age' value={age} onChange={(e)=>onInputChange(e)} />
+
                 </div>
                
                

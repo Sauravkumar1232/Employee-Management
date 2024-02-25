@@ -1,23 +1,48 @@
 import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { listEmployee } from '../service/EmployeeServce'
+import { useState} from 'react'
+import { listEmployees } from '../service/EmployeeServce'
+import { useNavigate } from 'react-router-dom'
 
-const ListOfEmployee = () => {
+const  ListOfEmployee = () => {
 
-const [ employee,setEmployee] = useState([])
+const [ employees,setEmployees] = useState([])
+const navigator = useNavigate();
 
 useEffect(() => {
-    listEmployee().then((response) =>{
-        setEmployee(response.data);
+    listEmployees().then((response) =>{
+        setEmployees(response.data);
     }).catch(error=>{
         console.error(error);
     })
     
 },[])
+// const loadUsers =async () =>{
+//   const result=await axios.get("http://localhost:9114/users")
+//   setUser(result.data)   
+
+//      // ?????  console.log(result.data)      
+//  }
+// const {id} = useParams();
+// useEffect(()=>{        // fetching data
+//   listEmployees()
+// },[])   
+
+// function  listEmployees(){ async () =>{
+//   const result=await axios.get("http://localhost:8081/employee/getAll")
+//   setEmployees(result.data)   
+
+//      // ?????  console.log(result.data)      
+//  }}
+
+
+ function addNewEmployee(){
+  navigator('/save')
+ }
   return (
     <div className='container'>
-      
+      <br/>
       <h2 className='text-center'>List Of Employee</h2>
+      <button type="button" className="btn btn-outline-primary" onClick= {addNewEmployee}>Add Employee</button>
       <table className='table table-striped table-bordered table-danger'>
         <thead>
             <tr>
@@ -30,8 +55,8 @@ useEffect(() => {
             </tr>
         </thead>
         <tbody>
-        {
-            employee.map(employee =>
+      
+           { employees.forEach((employee,index) =>
             <tr key={employee.id}>
                 <td>{employee.id}</td>
                 <td>{employee.name}</td>
@@ -40,8 +65,8 @@ useEffect(() => {
                 <td>{employee.phone}</td>
                 <td>{employee.age}</td>
             </tr>)
-        }
-
+        
+           }
         </tbody>
       </table>
 

@@ -8,3 +8,14 @@ export const listEmployees = () => axios.get("http://localhost:8081/employee/get
 // }
 
 export const createEmployee = (employee) => axios.post("http://localhost:8081/employee/save",employee);
+// export const getEmployee = (employeeId) => axios.get(`http://localhost:8081/employee/getById/${employeeId}`);
+// console.log(getEmployee.data)
+
+
+// const loadUser = async (employeeId) => {
+//     const result = await axios.fetch(`http://localhost:8081/employee/getById/${employeeId}`);
+//     // setUser(result.data);
+//     console.log(result.data)
+//   };
+// export const getEmployee = (employeeId) => axios.get('http://localhost:8081/employee/getById' + '/' + employeeId);
+const updateEmployee = (employee) =>axios.put("http://localhost:8081/employee/update"+"/"+employee);

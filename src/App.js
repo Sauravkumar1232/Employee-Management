@@ -21,15 +21,16 @@ function  App() {
   return (
 
     <>
-      <BrowserRouter>   
+      <Router>   
         <HeaderComponent/>
           <Routes>
-            <Route path='/' element={<ListOfEmployee/>}></Route>
+            {/* <Route path='/' element={<ListOfEmployee/>}></Route> */}
             <Route path='/getAll' element={<ListOfEmployee/>}></Route>
             <Route path='/save' element={<EmployeeComponent/>}></Route>  
+            <Route path='/edit-employee/:id' element = { <EmployeeComponent /> }></Route>
           </Routes>
         <FooterComponent/>
-      </BrowserRouter>
+      </Router>
           {/* <ListOfEmployee/> */}
       </>
     

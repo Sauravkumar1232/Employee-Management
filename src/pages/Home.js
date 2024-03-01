@@ -18,14 +18,15 @@ export default function Home() {
   }, []); //runs one on pageload otherwise without [] runs unlimited times
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:9114/users");
+    const result = await axios.get("http://localhost:8081/employee/getAll");
+      console.log((result.code))
     setUser(result.data);
 
     // ?????  console.log(result.data)
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:9114/user/${id}`);
+    await axios.delete(`http://localhost:8081/employee/${id}`);
     loadUsers();
     alert(`Employee ${id} deleted.`);
   };
@@ -47,10 +48,10 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user,index //map create array on calling time
+          {users.map((user,index //map create array on calling time
             ) => (
                 <tr>
-                  {/* <th scope="row" key={index}>{index+1}</th> */}
+                  <th scope="row" key={index}>{index+1}</th>
                   <th>{user.id}</th>
                   <td>{user.name}</td>
                   <td>{user.username}</td>
@@ -85,6 +86,7 @@ export default function Home() {
                 </tr>
               )
             )}
+            
           </tbody>
         </table>
       </div>

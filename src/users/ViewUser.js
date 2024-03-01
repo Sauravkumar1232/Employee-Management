@@ -4,23 +4,44 @@ import { Link, useParams } from "react-router-dom";
 
 export default function ViewUser() {
   const [user, setUser] = useState({
+    id:"",
     name: "",
-    username: "",
+    userName: "",
     email: "",
     phone: "",
     age:""
-  });
+  })
+
+  useEffect(()=>{
+    fetchUser();
+  },[])
+  const fetchUser=async()=>{
+    try{
+const res=await fetch(`http://localhost:8081/employee/getById/`+id);
+const data1=await res.json();
+setUser(data1.data)
+console.log(data1)
+    }catch(e){
+      console.error(e)
+    }
+  }
+
 
   const { id } = useParams(); //specific user for specific id
-  //hook
-  useEffect(() => {
-    loadUser();
-  }, []);
+  // //hook
+  // useEffect(() => {
+  //   loadUser();
+  // }, []);
 
-  const loadUser = async () => {
-    const result = await axios.get(`http://localhost:9114/user/${id}`);
-    setUser(result.data);
-  };
+  // const loadUser=async()=>{
+  //   const result =  await fetch(`http://localhost:8081/employee/getById/`+id);
+  //     const data=await result.json()
+  //   console.log(data)
+  //   setUser(data);
+  //   console.log(user.age)
+  // };
+  
+ 
   return (
     <div className="container">
       <div className="row">
@@ -29,13 +50,14 @@ export default function ViewUser() {
 
           <div className="card">
             <div className="card-header">
+            
               Details of user id: {user.id}
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                   <b>Name : {user.name}</b>
                 </li>
                 <li className="list-group-item">
-                  <b>UserName : {user.username}</b>
+                  <b>UserName : {user.userName}</b>
                 </li>
                 <li className="list-group-item">
                   <b>Email : {user.email}</b>
@@ -49,7 +71,7 @@ export default function ViewUser() {
               </ul>
             </div>
           </div>
-          <Link to={"/"} className="backToHome">
+          <Link to={"/getAll"} className="backToHome">
          
             Back to Home
           </Link>

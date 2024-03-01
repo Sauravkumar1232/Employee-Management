@@ -32,14 +32,15 @@ export default function EditUser() {
   const onSubmit = async (e) => {
     e.preventDefault(); //on url not showing extra data
     //await axios.post("http://localhost:9114/user", user);
-    await axios.put(`http://localhost:9114/user/${id}`, user);
-    navigate("/");
+    await axios.put(`http://localhost:8081/employee/update/${id}`, user);
+    navigate("/getAll");
     alert(`${id} Employee Updated `);
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:9114/user/${id}`);
-    setUser(result.data);
+    const result = await fetch(`http://localhost:8081/employee/getById/${id}`);
+    const data1=await result.json();
+    setUser(data1.data);
   };
 
   return (
@@ -144,7 +145,7 @@ export default function EditUser() {
               className="btn btn-outline-primary">
               Submit
             </button>
-            <Link to={"/"} className="btn btn-outline-danger">
+            <Link to={"/getAll"} className="btn btn-outline-danger">
               Cancel
             </Link>
           </form>

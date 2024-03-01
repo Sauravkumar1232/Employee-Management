@@ -24,12 +24,14 @@ function  App() {
       <Router>   
         <HeaderComponent/>
           <Routes>
-            {/* <Route path='/' element={<ListOfEmployee/>}></Route> */}
+            {/* <Route path='/' element={<Home/>}></Route> */}
             <Route path='/getAll' element={<ListOfEmployee/>}></Route>
             <Route path='/save' element={<EmployeeComponent/>}></Route>  
-            <Route path='/edit-employee/:id' element = { <EmployeeComponent /> }></Route>
+            <Route exact path='/viewuser/:id' element={<EmployeeComponent/>}/>
+            <Route path='/view/:id' element = { <ViewUser /> }></Route>
+            <Route exact path='/edit/:id' element={<EditUser/>}/> 
           </Routes>
-        <FooterComponent/>
+        {/* <FooterComponent/> */}
       </Router>
           {/* <ListOfEmployee/> */}
       </>
